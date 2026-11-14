@@ -1,12 +1,19 @@
-# NEXORA AI — Android PWA + website
+# NEXORA AI Version 1.0
+
 Developer: Dudekula Ayaan ahammad
 
-## Publish from Android
-1. Extract this ZIP using Files on Android.
-2. On github.com create a private repository named nexora-ai and upload the CONTENTS of the nexora-ai folder (not the folder itself).
-3. On dashboard.render.com create a Web Service from that GitHub repository. Runtime Node, build command `npm install`, start command `npm start`.
-4. Add environment variable `OPENAI_API_KEY` with your key in Render's Environment settings. Never commit it to GitHub or paste it into chat.
-5. Deploy and open the HTTPS onrender.com URL.
-6. In Android Chrome, menu > Install app / Add to Home screen.
+Responsive AI chat website and Android installable PWA. Includes coding help, multilingual chat, locally stored conversation history and TXT export.
 
-AI calls require a paid or otherwise funded API account. Public deployment should add authentication, rate limits, usage quotas and abuse protection before sharing widely. Chat history is browser-local; the PWA caches only the interface and requires internet for AI responses.
+## Deploy with GitHub and Railway / Render
+1. Add the contents of this project folder to the root of your GitHub repository (not inside an extra `nexora-ai` directory).
+2. Create a Node.js web service connected to the repository.
+3. Build command: `npm install`. Start command: `npm start`. Root directory: blank.
+4. Add `OPENAI_API_KEY`, `OPENAI_MODEL` (optional), and `NEXORA_ACCESS_PASSWORD` as **private host environment variables**. Never commit secrets.
+5. Deploy. Open the HTTPS URL in Android Chrome, then choose **Install app** or **Add to Home screen**.
+6. To use `NEXORA.com`, you must first own the domain and configure the hosting provider's custom domain and DNS records. The domain is not registered or connected by this project.
+
+## Local development
+Node.js 20+: `npm start` then open `http://localhost:3000`.
+
+## Security / limitations
+This is a **private prototype**, not a hardened multi-user SaaS product. Password is shared and held in browser memory for the current page session; IP rate limits are in-memory and may reset across deployments or instances. Add proper account authentication, persistent distributed rate limits, CSRF/origin protections where applicable, monitoring, spending caps, and privacy policies before public access. Chat history is saved in localStorage on the current device and can be lost if browser data is cleared. Export is TXT only. The PWA interface can work offline after caching, but AI chat requires internet and a funded API account. The app does not include a domain registration, live deployment, or APK.
